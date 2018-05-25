@@ -9,7 +9,7 @@ const GST = require('../models/gstModel');
 router.set('view engine', 'ejs');
 
 router.get('/', async (req, res, next) => {
-  const results = await GST.find({})
+  const results = await GST.find({});
   console.log(results);
   res.render('index', {results});
 });
@@ -29,15 +29,9 @@ router.post('/add', async (req, res, next) => {
       total: totalPrice
     }
 
-    GST.create(gstData, function (error, result) {
-        if (error) {
-            return next(error);
-        } else {
-          console.log(result);
-          res.redirect('/');
-        }
-      });
-
+    var result = await GST.create(gstData);
+    console.log(result);
+    res.redirect('/');
 
 });
 
