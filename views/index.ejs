@@ -1,5 +1,6 @@
 <html>
     <head>
+    <title>GST Calculator</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -10,13 +11,13 @@
         <div class="container" style="padding-top: 3%">
                 <form method="POST" action="/add">
                         <div class="row">
-                          <div class="col col-md-3">
-                            <input type="text" name="item" class="form-control" placeholder="Item Name" required>
+                          <div class="col col-md-3" style="padding:3%;">
+                            <input type="text"  name="item" class="form-control" placeholder="Item Name" required>
                           </div>
-                          <div class="col col-md-3">
-                            <input type="number" name="price" class="form-control" placeholder="Price" required>
+                          <div class="col col-md-3" style="padding:3%;">
+                            <input type="number" maxlength="8" name="price" class="form-control" placeholder="Price" required>
                           </div>
-                          <div class="col col-md-3">
+                          <div class="col col-md-3" style="padding:3%;">
                                 <select name="gst" class="form-control" required>
                                     <option value="">Select GST %</option>
                                     <option value="5">5 %</option>
@@ -25,21 +26,21 @@
                                     <option value="28">28 %</option>
                                 </select>
                           </div>
-                          <div class="col col-md-3">
+                          <div class="col col-md-3" style="padding:3%;">
                             <button type="submit" class="btn btn-success">Submit</button>
                           </div>
 
                         </div>
                       </form>
               <center>
-                <a href="/graph" class="btn btn-primary"> View Graph </a>
-                <table class="table table-striped">
+                <a href="/graph" class="btn btn-warning"> View Graph </a> <br><br>
+                <table class="table table-striped  text-center">
                 <thead>
                   <tr>
-                    <th scope="col">Item</th>
-                    <th scope="col">Price %</th>
-                    <th scope="col">GST</th>
-                    <th scope="col">Total Price</th>
+                    <th class="text-center" scope="col">Item</th>
+                    <th class="text-center" scope="col">Price</th>
+                    <th class="text-center" scope="col">GST</th>
+                    <th class="text-center" scope="col">Total Price</th>
 
                   </tr>
                 </thead>
@@ -47,10 +48,10 @@
 
                   <% results.forEach(function(data) {%>
                   <tr>
-                    <td><%= data.item%></td>
-                    <td><%= data.price%></td>
-                    <td><%= data.gst%></td>
-                    <td><%= data.total%></td>
+                    <td><%= data.item %></td>
+                    <td>&#x20b9; <%= data.price %></td>
+                    <td><%= data.gst %> %</td>
+                    <td>&#x20b9; <%= data.total %></td>
                   </tr>
                   <% }) %>
                 </tbody>
