@@ -19,6 +19,10 @@ app.use(express.static(__dirname + '/views'));
 var routes = require('./routes/router');
 app.use('/', routes);
 
+//api
+var api = require('./routes/api');
+app.use('/api', api);
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   var err = new Error('File Not Found');
