@@ -9,7 +9,7 @@ var db = mongoose.connection;
 const port = process.env.PORT || 3000;
 
 //add cors
-app.use(cors();)
+app.use(cors());
 
 // parse incoming requests
 app.use(bodyParser.json());
