@@ -2,10 +2,14 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var cors = require('cors');
 
 var db = mongoose.connection;
 
 const port = process.env.PORT || 3000;
+
+//add cors
+app.use(cors();)
 
 // parse incoming requests
 app.use(bodyParser.json());
@@ -36,7 +40,19 @@ app.use(function (err, req, res, next) {
   res.send(err.message);
 });
 
+//Setting headers
+app.use((req, res, next) => {
 
+  // Website you wish to allow to connect
+  res.setHeader('Access-Control-Allow-Origin', '*');
+
+  // Request methods you wish to allow
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+  res.setHeader('Access-control-Allow-Headers', 'Content-Type, Access-control-Allow-Headers, Authorization');
+
+  next();
+});
 
 // listen on available port
 app.listen(port, function () {
